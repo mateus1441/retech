@@ -173,7 +173,8 @@ img::-moz-selection {
 header.masthead {
   text-align: center;
   color: white;
-  background-image: url("../img/consultoria-bg.jpg");
+  /* background-image: url("../img/consultoria-bg.jpg"); */
+  background-image: url("../img/bg-green-1920x1080.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
