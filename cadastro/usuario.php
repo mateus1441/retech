@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -56,7 +60,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Usuário</a>
-              <a class="dropdown-item" href="empresa.html">Empresa</a>
+              <a class="dropdown-item" href="empresa.php">Empresa</a>
             </div>
           </li>
           <li class="nav-item">
@@ -85,31 +89,32 @@
         </div>
       </div>
 
-      <form class="needs-validation" novalidate>
+      <?php if(isset($msg) && $msg != false) echo "<p> $msg </p>" ?>
+      <form action="../php/bdUsuario.php" method="POST" class="needs-validation" novalidate>
           <fieldset>
             <div class="form-group col-md-6 mb-3">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" placeholder="Insira seu nome" required>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Insira seu nome" required>
             </div>
             <div class="form-group col-md-4 mb-3">
                 <label for="cpf">CPF</label>
-                <input type="text" class="form-control" id="cpf" placeholder="Insira seu CPF" required>
+                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Insira seu CPF" required>
             </div>
             <div class="form-group col-md-4 mb-3">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Insira seu email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Insira seu email" required>
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" id="endereco" placeholder="Insira seu endereço" required>
+                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Insira seu endereço" required>
             </div>
             <div class="form-group col-md-3 mb-3">
                 <label for="telefone">Telefone</label>
-                <input type="tel" class="form-control" id="telefone" placeholder="Insira seu telefone" required>
+                <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="Insira seu telefone" required>
             </div>
             <div class="form-group col-md-3 mb-3">
                 <label for="senha">Senha</label>
-                <input type="password" class="form-control" id="senha" placeholder="Insira uma senha de acesso" required>
+                <input type="password" class="form-control" id="senha" name="senha" placeholder="Insira uma senha de acesso" required>
             </div>
             <!--
             <div class="form-group col-md-4 mb-3">
@@ -145,6 +150,7 @@
         </fieldset>
       </form>
       
+    <!--
       <script>
       // Exemplo de JavaScript inicial para desativar envios de formulário, se houver campos inválidos.
       (function() {
@@ -165,6 +171,7 @@
         }, false);
       })();
       </script>
+    -->
 
     </div>
   </section>

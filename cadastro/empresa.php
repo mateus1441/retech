@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -55,7 +59,7 @@
               Cadastro
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="usuario.html">Usuário</a>
+              <a class="dropdown-item" href="usuario.php">Usuário</a>
               <a class="dropdown-item" href="#">Empresa</a>
             </div>
           </li>
@@ -85,31 +89,32 @@
         </div>
       </div>
 
-      <form class="needs-validation" novalidate>
+      <?php if(isset($msg) && $msg != false) echo "<p> $msg </p>" ?>
+      <form action="../php/bdEmpresa.php" method="POST" class="needs-validation" novalidate>
           <fieldset>
             <div class="form-group col-md-6 mb-3">
-                <label for="nomeEmpresa">Nome</label>
-                <input type="text" class="form-control" id="nomeEmpresa" placeholder="Insira o nome da empresa" required>
+                <label for="nome">Nome da empresa</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Insira o nome da empresa" required>
             </div>
             <div class="form-group col-md-4 mb-3">
                 <label for="cnpj">CNPJ</label>
-                <input type="text" class="form-control" id="cnpj" placeholder="Insira o CNPJ da empresa" required>
+                <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="Insira o CNPJ da empresa" required>
             </div>
             <div class="form-group col-md-4 mb-3">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Insira o email da empresa" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Insira o email da empresa" required>
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" id="endereco" placeholder="Insira o endereço da empresa" required>
+                <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Insira o endereço da empresa" required>
             </div>
             <div class="form-group col-md-3 mb-3">
                 <label for="telefone">Telefone</label>
-                <input type="tel" class="form-control" id="telefone" placeholder="Insira o telefone da empresa" required>
+                <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="Insira o telefone da empresa" required>
             </div>
             <div class="form-group col-md-3 mb-3">
                 <label for="senha">Senha</label>
-                <input type="password" class="form-control" id="senha" placeholder="Insira uma senha de acesso" required>
+                <input type="password" class="form-control" id="senha" name="senha" placeholder="Insira uma senha de acesso" required>
             </div>
             <!--
             <div class="form-group col-md-4 mb-3">
