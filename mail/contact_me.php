@@ -1,5 +1,6 @@
 <?php
 // Check for empty fields
+// https://stackoverflow.com/questions/15965376/how-to-configure-xampp-to-send-mail-from-localhost
 if(empty($_POST['name'])      ||
    empty($_POST['email'])     ||
    empty($_POST['phone'])     ||
