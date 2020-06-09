@@ -13,12 +13,16 @@ session_start();
     
     // Processamento do arquivo
 
-    $sql_code = "INSERT INTO usuario (nome, cpf, email, endereco, telefone, senha) VALUES('$nome', '$cpf', '$email', '$endereco', '$telefone', '$senha')";
+    $sql_code = "INSERT INTO usuario (nome, cpf, email, endereco, telefone) VALUES('$nome', '$cpf', '$email', '$endereco', '$telefone')";
+    $sql_codeLogin = "INSERT INTO login (usuario, senha, permissao) VALUES('$email', md5('$senha'), 'usuario')";
 
     if($mysqli->query($sql_code))
-      $msg = "Enviado com sucesso!";
+      if($mysqli->query($sql_codeLogin))
+      $_SESSION['bdUsuario'] = true;
+      else
+      $_SESSION['bdUsuario'] = false;
     else
-      $msg = "Falha ao enviar.";
+    $_SESSION['bdUsuario'] = false;
 
   
     header('Location: ../cadastro/usuario.php');

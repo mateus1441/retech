@@ -72,6 +72,9 @@ session_start();
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="../index.html#contact">Contato</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="../login/index_login.php">Entrar</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -89,7 +92,16 @@ session_start();
         </div>
       </div>
 
-      <?php if(isset($msg) && $msg != false) echo "<p> $msg </p>" ?>
+          <?php if (isset($_SESSION['bdEmpresa']) && $_SESSION['bdEmpresa'] == true): ?>
+            <div class="alert alert-success" role="alert">
+              Salvo com sucesso
+            </div>
+          <?php elseif(isset($_SESSION['bdEmpresa']) && $_SESSION['bdEmpresa'] == false): ?>
+            <div class="alert alert-danger" role="alert">
+              Ocorreu uma falha ao tentar salvar os dados
+            </div>
+          <?php endif; unset($_SESSION['bdEmpresa']) ?>
+      
       <form action="../php/bdEmpresa.php" method="POST" class="needs-validation" novalidate>
           <fieldset>
             <div class="form-group col-md-6 mb-3">

@@ -13,12 +13,16 @@ session_start();
     
     // Processamento do arquivo
 
-    $sql_code = "INSERT INTO empresa (nome, cnpj, email, endereco, telefone, senha) VALUES('$nome', '$cnpj', '$email', '$endereco', '$telefone', '$senha')";
+    $sql_code = "INSERT INTO empresa (nome, cnpj, email, endereco, telefone) VALUES('$nome', '$cnpj', '$email', '$endereco', '$telefone')";
+    $sql_codeLogin = "INSERT INTO login (usuario, senha, permissao) VALUES('$email', md5('$senha'), 'empresa')";
 
     if($mysqli->query($sql_code))
-      $msg = "Enviado com sucesso!";
+      if($mysqli->query($sql_codeLogin))
+      $_SESSION['bdEmpresa'] = true;
+      else
+      $_SESSION['bdEmpresa'] = false;
     else
-      $msg = "Falha ao enviar.";
+    $_SESSION['bdEmpresa'] = false;
 
   
     header('Location: ../cadastro/empresa.php');
