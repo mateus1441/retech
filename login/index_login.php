@@ -60,6 +60,8 @@ session_start();
                             </div>
                             <button type="submit" class="button is-block is-link is-large is-fullwidth">Entrar</button>
                             <br>
+                            <button class="btn btn-primary col-6" onclick="location.href='../index.php'" type="button">Voltar para o inicio</button>
+                            <br>
                         </form>
                     </div>
                 </div>
