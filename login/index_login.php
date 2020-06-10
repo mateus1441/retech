@@ -10,6 +10,10 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sistema de Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/bulma.min.css" />
     <link rel="stylesheet" type="text/css" href="css/login.css">
@@ -26,19 +30,26 @@ session_start();
                     <?php
                     if(isset($_SESSION['nao_autenticado'])):
                     ?>
-                    <div class="notification is-danger">
-                      <p>ERRO: Usuário ou senha inválidos.</p>
-                    </div>
+                        <div class="alert alert-danger" role="alert">
+                            Usuário ou senha inválidos
+                        </div>
                     <?php
                     endif;
                     unset($_SESSION['nao_autenticado']);
                     ?>
+
+                    <?php if (isset($_SESSION['camposrequeridos']) && $_SESSION['camposrequeridos'] == true): ?>
+                        <div class="alert alert-danger" role="alert">
+                            Os campos email e senha são obrigatórios
+                        </div>
+                    <?php endif; unset($_SESSION['camposrequeridos']) ?>
+
                     <div class="box">
                         <form action="login.php" method="POST">
                             <h3 class="title has-text-grey">Login Retech</h3>
                             <div class="field">
                                 <div class="control">
-                                    <input name="usuario" name="text" class="input is-large" placeholder="Seu usuário" autofocus="">
+                                    <input name="usuario" name="text" class="input is-large" placeholder="Seu email" autofocus="">
                                 </div>
                             </div>
  
@@ -49,7 +60,6 @@ session_start();
                             </div>
                             <button type="submit" class="button is-block is-link is-large is-fullwidth">Entrar</button>
                             <br>
-                            <b><small>Desenvolvido por Retech - E-lixo <br>&copy; Copyright 2020</small></b>
                         </form>
                     </div>
                 </div>

@@ -52,7 +52,7 @@ session_start();
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="../index.html">Inicio</a>
+            <a class="nav-link js-scroll-trigger" href="../index.php">Inicio</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -64,13 +64,13 @@ session_start();
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="../index.html#services">Notícias</a>
+            <a class="nav-link js-scroll-trigger" href="../index.php#services">Notícias</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="../index.html#portfolio">Mapa</a>
+            <a class="nav-link js-scroll-trigger" href="../index.php#portfolio">Mapa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="../index.html#contact">Contato</a>
+            <a class="nav-link js-scroll-trigger" href="../index.php#contact">Contato</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="../login/index_login.php">Entrar</a>

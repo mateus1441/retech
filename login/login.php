@@ -3,6 +3,7 @@ session_start();
     include('../php/conexao.php');
 
     if (empty($_POST['usuario']) || empty($_POST['senha'])) {
+        $_SESSION['camposrequeridos'] = true;
         header ('Location: index_login.php');
         exit();
     }
@@ -22,7 +23,7 @@ session_start();
     if ($row == 1){
         $_SESSION['usuario'] = $usuario;
         $_SESSION['permissao'] = $permissao;
-        header ('Location: ../painel.php');
+        header ('Location: ../index.php');
         exit();
     }
     else {

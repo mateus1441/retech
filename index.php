@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -31,6 +35,15 @@
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">Retech E-Lixo</a>
+
+      <?php if (isset($_SESSION['usuario'])): ?>
+        <a class="navbar-brand js-scroll-trigger text-white">Usuário: <?php echo $_SESSION['usuario'] ?></a>
+      <?php endif; ?>
+
+      <?php if (isset($_SESSION['usuario'])): ?>
+        <a class="navbar-brand js-scroll-trigger text-danger" href="login/logout.php">Sair</a>
+      <?php endif; ?>
+
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
