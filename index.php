@@ -147,17 +147,54 @@ session_start();
       </div>
       <div class="row">
         <div class="col-lg-12 text-center">
-          <div id="googleMap" style="width:100%;height:400px;"></div>
+          <div class="shadow p-3 mb-5 bg-white rounded" id="googleMap" style="width:100%;height:500px;"></div>
 
           <script>
             function myMap() {
             var mapProp= {
-              center:new google.maps.LatLng(-7.995626,-34.927077),
-              zoom:5,
+              center:new google.maps.LatLng(-8.056563, -34.885467),
+              zoom:11,
             };
             var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+            var locations = [
+              ['Empresa 1', -8.109246, -34.975205],
+              ['Empresa 2', -8.122265, -34.907839],
+              ['Empresa 3', -8.005566, -34.921475],
+              ['Empresa 4', -8.068723, -34.930816],
+              ['Empresa 5', -8.031743, -34.991684],
+              ['Empresa 6', -8.000466, -34.843884],
+              ['Empresa 7', -8.034292, -34.911373]
+            ];
+
+            var contentString = '<div id="content">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<h1 id="firstHeading" class="firstHeading">Nome da empresa</h1>'+
+              '<div id="bodyContent">'+
+              '<p>Descrição da empresa</p>'+
+              '<p>Endereço, telefone, email</p>'+
+              '</div>'+
+              '</div>';
+
+            var infowindow = new google.maps.InfoWindow({
+              content: contentString
+            });
+            
+            for (i = 0; i < locations.length; i++) {  
+              marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                title: locations[i][0],
+                map: map
+              });
+
+              marker.addListener('click', function() {
+                infowindow.open(map, marker);
+              });
             }
-            </script>
+
+          }
+          </script>
 
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCUt0XCGYq9IN5s6UgN7_qAqdWw0-SgO8&callback=myMap"></script>
 
