@@ -1,0 +1,44 @@
+  [
+    {
+        "Id": 1,
+        "Empresa": "Empresa 1",
+        "Latitude": -8.109246,
+        "Longitude": -34.975205
+    },
+    {
+        "Id": 2,
+        "Empresa": "Empresa 2",
+        "Latitude": -8.122265,
+        "Longitude": -34.907839
+    },
+    {
+        "Id": 3,
+        "Empresa": "Empresa 3",
+        "Latitude": -8.005566,
+        "Longitude": -34.921475
+    },
+    {
+        "Id": 4,
+        "Empresa": "Empresa 4",
+        "Latitude": -8.068723,
+        "Longitude": -34.930816
+    },
+    {
+        "Id": 5,
+        "Empresa": "Empresa 5",
+        "Latitude": -8.031743,
+        "Longitude": -34.991684
+    },
+    {
+        "Id": 6,
+        "Empresa": "Empresa 6",
+        "Latitude": -8.000466,
+        "Longitude": -34.843884
+    },
+    {
+        "Id": 7,
+        "Empresa": "Empresa 7",
+        "Latitude": -8.034292,
+        "Longitude": -34.911373
+    }
+]

@@ -14,6 +14,8 @@ session_start();
 
   <title>Retech E-Lixo</title>
 
+  <script src="js/jquery-3.5.1.js"></script>
+
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -149,6 +151,22 @@ session_start();
         <div class="col-lg-12 text-center">
           <div class="shadow p-3 mb-5 bg-white rounded" id="googleMap" style="width:100%;height:500px;"></div>
 
+          <?php
+            include('php/conexao.php');
+            $get_jornalista = "SELECT * FROM empresa";
+            $get_jornalista_query = mysqli_query($conexao, $get_jornalista);
+            while ($get_row = mysqli_fetch_array($get_jornalista_query)){
+              $rows []= array(
+                'Empresa' => $get_row['nome'],
+                'Latitude' => $get_row['Latitude'],
+                'Longitude' => $get_row['Longitude'],
+                'Email' => $get_row['email'],
+                'Endereco' => $get_row['endereco'],
+                'Telefone' => $get_row['telefone'],
+              );
+            }
+          ?>
+
           <script>
             function myMap() {
             var mapProp= {
@@ -157,41 +175,41 @@ session_start();
             };
             var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-            var locations = [
-              ['Empresa 1', -8.109246, -34.975205],
-              ['Empresa 2', -8.122265, -34.907839],
-              ['Empresa 3', -8.005566, -34.921475],
-              ['Empresa 4', -8.068723, -34.930816],
-              ['Empresa 5', -8.031743, -34.991684],
-              ['Empresa 6', -8.000466, -34.843884],
-              ['Empresa 7', -8.034292, -34.911373]
-            ];
+            function carregarPontos() {
 
-            var contentString = '<div id="content">'+
-              '<div id="siteNotice">'+
-              '</div>'+
-              '<h1 id="firstHeading" class="firstHeading">Nome da empresa</h1>'+
-              '<div id="bodyContent">'+
-              '<p>Descrição da empresa</p>'+
-              '<p>Endereço, telefone, email</p>'+
-              '</div>'+
-              '</div>';
+              var pontos = <?php echo json_encode($rows); ?>;
+  
+              $.each(pontos, function(index, ponto) {
 
-            var infowindow = new google.maps.InfoWindow({
-              content: contentString
-            });
-            
-            for (i = 0; i < locations.length; i++) {  
-              marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                title: locations[i][0],
-                map: map
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(ponto.Latitude, ponto.Longitude),
+                    title: ponto.Empresa,
+                    map: map
+                });
+
+                var contentString = '<div id="content">'+
+                '<div id="siteNotice">'+
+                '</div>'+
+                '<h1 id="firstHeading" class="firstHeading">'+ponto.Empresa+'</h1>'+
+                '<div id="bodyContent">'+
+                '<p>Descrição da empresa</p>'+
+                '<p>'+ponto.Endereco+', '+ponto.Telefone+', '+ponto.Email+'</p>'+
+                '</div>'+
+                '</div>';
+
+                var infowindow = new google.maps.InfoWindow(), marker;
+
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        infowindow.setContent(contentString);
+                        infowindow.open(map, marker);
+                    }
+                })(marker))
+
               });
 
-              marker.addListener('click', function() {
-                infowindow.open(map, marker);
-              });
             }
+            carregarPontos();
 
           }
           </script>
